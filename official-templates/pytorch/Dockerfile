@@ -2,7 +2,7 @@ ARG BASE_IMAGE
 FROM ${BASE_IMAGE}
 
 ARG TORCH
-ARG PYTHON_VERSION
+ARG PYTHON_VERSION=3.11
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 

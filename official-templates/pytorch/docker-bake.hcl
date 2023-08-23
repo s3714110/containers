@@ -76,3 +76,18 @@ target "191-py39-cuda111-devel" {
         TORCH = "torch==1.9.1+cu111 torchvision==0.10.1+cu111 torchaudio==0.9.1 -f https://download.pytorch.org/whl/torch_stable.html"
     }
 }
+
+
+target "latest-nightly-py311-cuda1210-devel" {
+    dockerfile = "Dockerfile"
+    tags = ["s3714110/runpod-pytorch:latest.nightly-py3.10-cuda12.0.1-devel"]
+    contexts = {
+        scripts = "../../container-template"
+        proxy = "../../container-template/proxy"
+    }
+    args = {
+        BASE_IMAGE = "nvidia/cuda:12.1.0-devel-ubuntu22.04"
+        PYTHON_VERSION = "3.11"
+        TORCH = "--pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu121"
+    }
+}
