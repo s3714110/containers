@@ -35,7 +35,8 @@ RUN ln -s /usr/bin/python${PYTHON_VERSION} /usr/bin/python && \
     curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && \
     python get-pip.py
 
-
+ENV CUDA_LAUNCH_BLOCKING=1
+ENV TORCH_USE_CUDA_DSA=1
 RUN pip install --upgrade --no-cache-dir pip
 RUN pip install --upgrade --no-cache-dir ${TORCH}
 RUN pip install --upgrade --no-cache-dir jupyterlab ipywidgets jupyter-archive jupyter_contrib_nbextensions
