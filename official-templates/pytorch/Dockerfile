@@ -58,5 +58,18 @@ COPY README.md /usr/share/nginx/html/README.md
 COPY --from=scripts start.sh /
 RUN chmod +x /start.sh
 
+
+
+#MLC Setup
+RUN pip install --pre --force-reinstall mlc-ai-nightly-cu118 mlc-chat-nightly-cu118 -f https://mlc.ai/wheels
+
+RUN curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash
+RUN apt-get install git-lfs
+
+RUN git clone --recursive https://github.com/mlc-ai/mlc-llm.git
+RUN pip install -e ./mlc-llm
+
+RUN pip install --upgrade --no-cache-dir pytest
+
 # Set the default command for the container
 CMD [ "/start.sh" ]

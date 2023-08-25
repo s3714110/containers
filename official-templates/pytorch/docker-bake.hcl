@@ -80,7 +80,7 @@ target "191-py39-cuda111-devel" {
 
 target "latest-nightly-py311-cuda1201-devel" {
     dockerfile = "Dockerfile"
-    tags = ["s3714110/runpod-pytorch:latest.nightly-py3.10-cuda12.0.1-devel"]
+    tags = ["s3714110/runpod-pytorch:latest.nightly-py3.10-cuda12.0.1-devel-mlc"]
     contexts = {
         scripts = "../../container-template"
         proxy = "../../container-template/proxy"
@@ -94,7 +94,7 @@ target "latest-nightly-py311-cuda1201-devel" {
 
 target "latest-nightly-py311-cuda1211-devel" {
     dockerfile = "Dockerfile"
-    tags = ["s3714110/runpod-pytorch:latest.nightly-py3.10-cuda12.1.1-devel"]
+    tags = ["s3714110/runpod-pytorch:latest.nightly-py3.10-cuda12.1.1-devel-mlc"]
     contexts = {
         scripts = "../../container-template"
         proxy = "../../container-template/proxy"
@@ -108,7 +108,7 @@ target "latest-nightly-py311-cuda1211-devel" {
 
 target "latest-nightly-py311-cuda1220-devel" {
     dockerfile = "Dockerfile"
-    tags = ["s3714110/runpod-pytorch:latest.nightly-py3.10-cuda12.2.0-devel"]
+    tags = ["s3714110/runpod-pytorch:latest.nightly-py3.10-cuda12.2.0-devel-mlc"]
     contexts = {
         scripts = "../../container-template"
         proxy = "../../container-template/proxy"
@@ -120,3 +120,17 @@ target "latest-nightly-py311-cuda1220-devel" {
     }
 }
 
+
+target "201-py311-cuda1180-devel-mlc" {
+    dockerfile = "Dockerfile"
+    tags = ["s3714110/runpod-pytorch:201-py3.11-cuda11.8.0-devel-mlc"]
+    contexts = {
+        scripts = "../../container-template"
+        proxy = "../../container-template/proxy"
+    }
+    args = {
+        BASE_IMAGE = "nvidia/cuda:11.8.0-devel-ubuntu22.04"
+        PYTHON_VERSION = "3.11"
+        TORCH = "torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118"
+    }
+}
